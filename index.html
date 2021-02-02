@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewIndex" content="">
+        <title>React Tutorial</title>
+    </head>
+    <body>
+        <div id="app">
+
+        </div>
+        <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+        <script>
+            function MeuComponente1() {
+                const myName='Th4.ta';
+                return (
+                    React.createElement(
+                        'div', 
+                        {className:'componente1'},
+                        React.createElement(MeuComponente2, {name:myName})
+                    )
+                )
+            }
+            function MeuComponente2(props) {
+                return (
+                    React.createElement('div', {className:'componente2'},
+                        React.createElement(MeuComponente3, {name:props.name})
+                    )
+                )            }
+            function MeuComponente3(props) {
+                return (
+                    React.createElement('div', {className:'componente3'},
+                        React.createElement(MeuComponente4, { name: props.name, idade: 26})
+                    )
+                )
+            }
+            function MeuComponente4(props) {
+                return (
+                    React.createElement('p', {className:'componente4'}, 
+                        React.createElement('p', null, props.name + ' ' + props.idade)
+                    )
+                )
+            }
+
+            function MeuComponente() {
+                return React.createElement('div', null, 
+                    React.createElement(MeuComponente1)
+                )
+            }
+
+            ReactDOM.render(
+                React.createElement(MeuComponente),
+                document.getElementById('app')
+            )
+        </script>
+    </body>
+</html>
